@@ -1,0 +1,14 @@
+title in html
+
+5 sec countdown wich triggers a second countdown(60sec)
+
+main game function inside 60sec timr function
+
+details on each question stored in global memory
+
+function loadQuestion() {
+    bring in question details
+    display wuestion details
+
+
+}

@@ -3,11 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <title>JsQuiz</title>
+    <!-- <link rel="stylesheet" href="./assets/css/reset.css" /> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <h1 id="title">Welcome to JavaScript Trivia!</h1>
+    <h2 id="countdown"></h2>
+
+    <div>
+      <div id="question-container" class="hide">
+        <div id="question">Question</div>
+        <div id="answer-buttons">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+          <button class="btn">Answer 5</button>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="start-btn">Start</button>
+        <button id="submit-btn" class="hide">Submit</button>
+      </div>
+    </div>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
