@@ -1,9 +1,13 @@
 #title {
   background-color: rgb(42, 13, 49);
+  color: white;
 }
 #countdown {
   background-color: brown;
 }
-/* .hide {
+.hide {
   display: none;
-} */
+}
+#game-container {
+  background-color: grey;
+}
