@@ -1,13 +1,27 @@
+:root {
+  --dred: #c81d25;
+  --lred: #ff5a5f;
+  --grey: #bfd7ea;
+  --lblue: #087e8b;
+  --dblue: #0b3954;
+}
+* {
+  background-color: var(--lblue);
+}
+
 #title {
-  background-color: rgb(42, 13, 49);
-  color: white;
+  background-color: var(--grey);
+  color: var(--dblue);
 }
 #countdown {
-  background-color: brown;
+  background-color: var(--lred);
+  color: var(--dblue);
 }
+#questions {
+  background-color: var(--dblue);
+  color: var(var(--dred));
+}
+
 .hide {
   display: none;
-}
-#game-container {
-  background-color: grey;
 }
