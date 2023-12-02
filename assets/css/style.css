@@ -12,14 +12,33 @@
 #title {
   background-color: var(--grey);
   color: var(--dblue);
+  display: flex;
+  justify-content: center;
 }
 #countdown {
   background-color: var(--lred);
   color: var(--dblue);
 }
-#questions {
+#question {
   background-color: var(--dblue);
-  color: var(var(--dred));
+  color: var(--dred);
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#question-container {
+  border: 3px solid var(--lred);
+  padding-bottom: 10px;
+  margin: 20px;
+}
+button {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  align-items: center;
 }
 
 .hide {

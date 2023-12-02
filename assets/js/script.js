@@ -1,4 +1,4 @@
-// const
+// variable declorations
 
 var startButton = document.getElementById("start-btn");
 var questionContainer = document.getElementById("question-container");
@@ -9,7 +9,7 @@ var question1 = document.createElement("div");
 var questionEl = document.getElementById("question");
 var buttonsEl = document.getElementById("btn");
 var startTime = 5;
-var gameSeconds = 10;
+var gameSeconds = 5;
 
 var questions = [
   {
@@ -33,6 +33,7 @@ var questions = [
     answer: "a piece of text wrapped in quotes",
   },
 ];
+
 // event listeners
 
 startButton.addEventListener("click", startGame);
@@ -45,8 +46,9 @@ function startGame() {
 }
 function showQuestion() {
   questionEl.innerText = questions[0].question;
+  buttonsEl.textContent = questions[0].choices;
 }
-
+// countdown functions
 function countdown() {
   var timeInterval = setInterval(function () {
     startTime--;
@@ -75,12 +77,14 @@ function gameTime() {
     }
   }, 1000);
 }
-
+// end of game screen
 function gameOver() {
   timerEl.textContent = "You did it!";
-  questionEl.textContent = "Enter your initials to join the leaderboard";
+  questionEl.textContent = "Enter your initials to join the leaderboard!";
   var initialsInput = document.createElement("input");
-  initialsInput.setAttribute = ("type", "text");
-  initialsInput.setAttribute = ("placeholder", "Enter your initials here");
-  buttonContainer.appendChild(initialsInput);
+  questionContainer.appendChild(initialsInput);
+  var noThanks = document.createElement("button");
+  noThanks.textcontent = "No thanks";
+  questionContainer.appendChild(noThanks);
+  buttonContainer.classList.add("hide");
 }
