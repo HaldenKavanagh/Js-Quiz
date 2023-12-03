@@ -27,21 +27,16 @@
   text-align: center;
   font-size: 20px;
 }
-
-#question-container {
-  border: 3px solid var(--lred);
-  padding-bottom: 10px;
-  margin: 20px;
-}
-.btn {
+.option {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 10px;
-  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+  background-color: var(--grey);
+  color: var(--dblue);
+  border: 3px solid var(--dblue);
 }
 
 .hide {
   display: none;
 }
-

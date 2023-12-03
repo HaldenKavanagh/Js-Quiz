@@ -1,5 +1,5 @@
 // variable declorations
-
+var rules = document.getElementById("rules");
 var quizContainer = document.getElementById("quiz");
 var startButton = document.getElementById("start-btn");
 var questionContainer = document.getElementById("question");
@@ -40,11 +40,53 @@ const questions = [
     options: ["Pacific", "Antarctic", "Indian", "Atlantic"],
     correctAnswer: "Antarctic",
   },
+  {
+    question: "What is the fastest aquatic animal",
+    options: ["sealfish", "dolphin", "reef shark", "harbor seal"],
+    correctAnswer: "sealfish",
+  },
+  {
+    question: "how many noses does a slug have?",
+    options: ["none", "200", "9", "4"],
+    correctAnswer: "4",
+  },
+  {
+    question: "What is musical artist Aphex Twin's real name",
+    options: [
+      "Johnny Maloney",
+      "Shaun Krishnew",
+      "Frances Billard",
+      "Richard D James",
+    ],
+    correctAnswer: "Richard D James",
+  },
+  {
+    question:
+      "What is the name of the former Buffalo based rap gruip wich included Westside Gunn, Conway the Machine, and Benny the Butcher",
+    options: ["Grisielda", "$uicideBoy$", "ShittyBoyz", "Fire-toolz"],
+    correctAnswer: "Grisielda",
+  },
+  {
+    question: "Who is not an original member of the three six mafia",
+    options: ["DJ Paul", "Gangsta Boo", "Project Pat", "Lord Infamous"],
+    correctAnswer: "Project Pat",
+  },
+  {
+    question: "Where was the formerr musical gruip Drain-gang formed?",
+    options: [
+      "Stockholm, Sweden",
+      "Memphis Tennasee",
+      "Miami Florida",
+      "Frankfurt, Germany",
+    ],
+    correctAnswer: "Stockholm, Sweden",
+  },
 ];
 
 let currentQuestionIndex = 0;
 
 function startGame() {
+  rules.classList.add("hide");
   startButton.classList.add("hide");
   countdown();
 }
@@ -55,6 +97,7 @@ function displayQuestion() {
   optionsContainer.innerHTML = "";
   currentQuestion.options.forEach((option, index) => {
     const li = document.createElement("li");
+    li.classList.add("option");
     li.textContent = option;
     li.addEventListener("click", () => checkAnswer(index));
     optionsContainer.appendChild(li);
@@ -69,6 +112,8 @@ function checkAnswer(selectedIndex) {
     console.log("Correct!");
   } else {
     console.log("Incorrect!");
+    gameSeconds -= 10;
+    updateTimer();
   }
 
   currentQuestionIndex++;
@@ -82,11 +127,11 @@ function checkAnswer(selectedIndex) {
 function countdown() {
   var timeInterval = setInterval(function () {
     startTime--;
-    timerEl.textContent = startTime + " seconds left...";
+    timerEl.textContent = "get ready,   " + startTime + "  seconds left...";
 
     if (startTime === 0) {
       timerEl.textContent = "";
-      questionContainer.classList.remove("hide");
+      quizContainer.classList.remove("hide");
       clearInterval(timeInterval);
       gameTime();
       displayQuestion();
@@ -95,9 +140,9 @@ function countdown() {
 }
 function gameTime() {
   var timeInterval = setInterval(function () {
-    gameSeconds--;
-    timerEl.textContent = gameSeconds + " seconds left...";
     if (gameSeconds > 0) {
+      gameSeconds--;
+      updateTimer();
     }
 
     if (gameSeconds === 0) {
@@ -105,4 +150,16 @@ function gameTime() {
       clearInterval(timeInterval);
     }
   }, 1000);
+}
+function updateTimer() {
+  timerEl.textContent = `Time remaining: ${gameSeconds} seconds`;
+  if (gameSeconds <= 0) {
+    timerEl.textContent = "";
+    endGame();
+  }
+}
+
+function endGame() {
+  quizContainer.classList.add("hide");
+  const 
 }

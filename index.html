@@ -10,10 +10,30 @@
   <body>
     <h1 id="title">Welcome to JavaScript Trivia!</h1>
     <h2 id="countdown"></h2>
-    <div id="quiz">
+    <div id="quiz" class="hide">
       <p id="question"></p>
       <ul id="options"></ul>
     </div>
+    <div id="rules" class="rules">
+      <h2 id="rules-title">RULES</h2>
+      <ul>
+        <li>Click start to begin the game</li>
+        <li>When started, you will have 60 seconds to play</li>
+        <li>
+          For each question answered wrong, 10 seconds are subtracted from the
+          time, so be carefull!
+        </li>
+        <li>
+          When the timer hits zero, you can submit you score to the leaderboard
+          or play again
+        </li>
+        <li>
+          For each question answered correctly, you will be awarded 10 points,
+          for each question answered incorrectly, 10 points will be taken away
+        </li>
+      </ul>
+    </div>
+
     <button id="start-btn">start</button>
     <button id="next-btn" class="hide">Next</button>
 
