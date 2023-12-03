@@ -26,10 +26,10 @@ const questions = [
     correctAnswer: "gelatin",
   },
   {
-    question: "Who are the members of a tribe called quest?",
+    question: "Who are the members of a Tribe Called Quest?",
     options: [
-      "Biggie and tupac",
-      "Lauren hill, pras, and Wyclef Jean",
+      "Biggie and Tupac",
+      "Lauren hill, Pras, and Wyclef Jean",
       "Q-tip and Phife Dawg",
       "Nas and MF DOOM",
     ],
@@ -46,7 +46,7 @@ const questions = [
     correctAnswer: "sealfish",
   },
   {
-    question: "how many noses does a slug have?",
+    question: "How many noses does a slug have?",
     options: ["none", "200", "9", "4"],
     correctAnswer: "4",
   },
@@ -72,7 +72,7 @@ const questions = [
     correctAnswer: "Project Pat",
   },
   {
-    question: "Where was the formerr musical gruip Drain-gang formed?",
+    question: "Where was the former musical gruip Drain-gang formed?",
     options: [
       "Stockholm, Sweden",
       "Memphis Tennasee",
@@ -127,7 +127,7 @@ function checkAnswer(selectedIndex) {
 function countdown() {
   var timeInterval = setInterval(function () {
     startTime--;
-    timerEl.textContent = "get ready,   " + startTime + "  seconds left...";
+    timerEl.textContent = "Get ready,   " + startTime + "  seconds left...";
 
     if (startTime === 0) {
       timerEl.textContent = "";
@@ -161,5 +161,4 @@ function updateTimer() {
 
 function endGame() {
   quizContainer.classList.add("hide");
-  const 
 }
