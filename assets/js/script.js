@@ -1,6 +1,7 @@
 // variable declorations
 
 var startButton = document.getElementById("start-btn");
+var nextButton = document.getElementById("next-btn");
 var questionContainer = document.getElementById("question-container");
 var buttonContainer = document.getElementById("answer-buttons");
 var gameWindow = document.getElementById("game-container");
@@ -9,44 +10,112 @@ var question1 = document.createElement("div");
 var questionEl = document.getElementById("question");
 var buttonsEl = document.getElementById("btn");
 var startTime = 5;
-var gameSeconds = 5;
+var gameSeconds = 60;
+
+var shuffledQuestions, currentQuestionIndex;
 
 var questions = [
   {
     question: "what is the correct syntax for a variable?",
-    choices: ["variable() {}", "var()", "var.set()", "var = ''"],
-    answer: "var = ''",
+    answers: [
+      { text: "variable() {}", correct: false },
+      { text: "var()", correct: false },
+      { text: "var.set()", correct: false },
+      { text: "var = ''", correct: true },
+    ],
   },
   {
     question: "Wich answer is a boolian?",
-    choices: ["yes", "no", "false", "22.5"],
-    answer: "false",
+    answers: [
+      { text: "yes", correct: false },
+      { text: "no", correct: false },
+      { text: "22.5", correct: false },
+      { text: "false", correct: true },
+    ],
   },
   {
     question: "what is a string?",
-    choices: [
-      "a piece of text wrapped in quotes",
-      "any number",
-      "any number with a decimal",
-      "a function including if AND then statements",
+    answers: [
+      { text: "a piece of text wrapped in quotes", correct: true },
+      { text: "any number", correct: false },
+      { text: "any number with a decimal", correct: false },
+      { text: "a function including if AND then statements", correct: false },
     ],
-    answer: "a piece of text wrapped in quotes",
   },
 ];
 
 // event listeners
 
 startButton.addEventListener("click", startGame);
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
 
 // game function
 
 function startGame() {
   startButton.classList.add("hide");
+  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+
   countdown();
 }
-function showQuestion() {
-  questionEl.innerText = questions[0].question;
-  buttonsEl.textContent = questions[0].choices;
+
+function setNextQuestion() {
+  resetState();
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+  questionEl.innerText = question.question;
+  question.answers.forEach((answer) => {
+    var button = document.createElement("button");
+    button.innerText = answer.text;
+    button.classList.add("btn");
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    buttonContainer.appendChild(button);
+  });
+}
+
+function resetState() {
+  clearStatusClass(document.body);
+  nextButton.classList.add("hide");
+  while (buttonContainer.firstChild) {
+    buttonContainer.removeChild(buttonContainer.firstChild);
+  }
+}
+
+function selectAnswer(e) {
+  var selectedButton = e.target;
+  var correct = selectedButton.dataset.correct;
+  setStatusClass(document.body, correct);
+  Array.from(buttonContainer.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+  nextButton.classList.remove("hide");
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove("hide");
+  } else {
+    gameOver();
+  }
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
 }
 // countdown functions
 function countdown() {
@@ -59,7 +128,7 @@ function countdown() {
       questionContainer.classList.remove("hide");
       clearInterval(timeInterval);
       gameTime();
-      showQuestion();
+      setNextQuestion();
     }
   }, 1000);
 }
