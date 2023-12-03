@@ -10,22 +10,12 @@
   <body>
     <h1 id="title">Welcome to JavaScript Trivia!</h1>
     <h2 id="countdown"></h2>
-
-    <div id="game-container">
-      <div id="question-container" class="hide">
-        <div id="question"></div>
-        <div id="answer-buttons">
-          <input type="button" class="btn"></input>
-          <input type="button" class="btn"></input>
-          <input type="button" class="btn"></input>
-          <input type="button" class="btn"></input>
-        </div>
-      </div>
-      <div class="controls">
-        <button id="start-btn">Start</button>
-        <button id="next-btn" class="next-btn hide">next</button>
-      </div>
+    <div id="quiz">
+      <p id="question"></p>
+      <ul id="options"></ul>
     </div>
+    <button id="start-btn">start</button>
+    <button id="next-btn" class="hide">Next</button>
 
     <script src="./assets/js/script.js"></script>
   </body>
