@@ -25,6 +25,10 @@ body {
   border-radius: 5px;
 }
 
+#quiz {
+  border-radius: 5px;
+}
+
 #title {
   background-color: var(--grey);
   color: var(--dblue);
@@ -37,10 +41,15 @@ body {
   background-color: var(--lred);
   color: var(--dblue);
   border-radius: 5px;
+  padding: 3px;
+  border: 3px solid var(--dred);
+  text-align: center;
 }
 
 #start-btn {
   background-color: var(--lred);
+  font-size: 30px;
+  margin-top: 20px;
 }
 #rules-title {
   margin-left: 25px;
@@ -50,6 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  color: var(--grey);
 }
 
 /* styling for the question and options for each question */
@@ -67,11 +77,12 @@ body {
   display: flex;
   justify-content: center;
   padding: 5px;
-  margin: 5px;
-  background-color: var(--grey);
-  color: var(--dblue);
+  margin: auto;
+  background-color: var(--lblue);
+  color: var(--grey);
   border: 3px solid var(--dblue);
   border-radius: 5px;
+  max-width: 50%;
 }
 
 .option:hover {
@@ -79,6 +90,15 @@ body {
 }
 
 /* endgame screen */
+
+#initials {
+  color: var(--grey);
+  padding: 10px;
+}
+
+#initials button {
+  color: var(--grey);
+}
 
 ::placeholder {
   color: var(--dblue);
@@ -98,4 +118,12 @@ body {
 
 .hide {
   display: none;
+}
+
+/* media queries */
+
+@media (max-width: 769px) {
+  body {
+    margin: 0px;
+  }
 }

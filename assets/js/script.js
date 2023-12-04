@@ -87,6 +87,7 @@ let currentQuestionIndex = 0;
 function startGame() {
   rules.classList.add("hide");
   startButton.classList.add("hide");
+  timerEl.classList.remove("hide");
   countdown();
 }
 
@@ -175,6 +176,7 @@ function updateTimer() {
 // endgame screen, asks for user their initials to see the leaderboard, or calls the reetgame function
 
 function endGame() {
+  timerEl.classList.add("hide");
   quizContainer.classList.add("hide");
   initialsContainer.classList.remove("hide");
   playAgain.addEventListener("click", resetGame);
