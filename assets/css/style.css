@@ -6,7 +6,18 @@
   --dblue: #0b3954;
 }
 * {
+  background-color: var(--dblue);
+  font-family: "Gothic A1", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid var(--dred);
   background-color: var(--lblue);
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 5px;
 }
 
 #title {
@@ -14,18 +25,22 @@
   color: var(--dblue);
   display: flex;
   justify-content: center;
+  border-radius: 5px;
+  padding: 10px;
 }
 #countdown {
   background-color: var(--lred);
   color: var(--dblue);
+  border-radius: 5px;
 }
 #question {
-  background-color: var(--dblue);
-  color: var(--dred);
+  background-color: var(--grey);
+  color: var(--dblue);
   margin: 10px;
   padding: 10px;
   text-align: center;
   font-size: 20px;
+  border-radius: 5px;
 }
 .option {
   display: flex;
@@ -35,6 +50,29 @@
   background-color: var(--grey);
   color: var(--dblue);
   border: 3px solid var(--dblue);
+  border-radius: 5px;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: var(--dblue);
+  background-color: var(--lred);
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+#start-btn {
+  background-color: var(--lred);
+}
+#rules-title {
+  margin-left: 25px;
 }
 
 .hide {

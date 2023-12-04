@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JsQuiz</title>
-    <!-- <link rel="stylesheet" href="./assets/css/reset.css" /> -->
+    <title>triviagame</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Gothic+A1:wght@300;400&family=Rajdhani:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1 id="title">Welcome to JavaScript Trivia!</h1>
+    <h1 id="title">Welcome to My trivia game!</h1>
     <h2 id="countdown"></h2>
     <div id="quiz" class="hide">
       <p id="question"></p>
@@ -21,22 +23,28 @@
         <li>When started, you will have 60 seconds to play</li>
         <li>
           For each question answered wrong, 10 seconds are subtracted from the
-          time, so be carefull!
+          time so be carefull!
         </li>
         <li>
-          When the timer hits zero, you can submit you score to the leaderboard
-          or play again
-        </li>
-        <li>
-          For each question answered correctly, you will be awarded 10 points,
-          for each question answered incorrectly, 10 points will be taken away
+          The quiz has 10 questions, when you finish the game, your remaining time will be your score. Enter your initials to join the leaderboard!
         </li>
       </ul>
     </div>
+    <div id="initials" class="hide">
+      <h2>Enter your initials to join the leaderboard</h2>
+      <input type="text" id="initials-input" placeholder="Enter Initials here"></input>
+      <button id="next-btn">Continue to leaderboard</button>
+      <button id="play-again">Play again</button>
 
-    <button id="start-btn">start</button>
+    </div>
+    <div id="leaderboard" class="hide">
+      <ul id="leaderbard-container">
+        <p>leaderboard</p>
+      </ul>
+    </div>
+
+    <button id="start-btn" class="">start</button>
     <button id="next-btn" class="hide">Next</button>
-
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

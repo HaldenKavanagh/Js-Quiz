@@ -5,8 +5,15 @@ var startButton = document.getElementById("start-btn");
 var questionContainer = document.getElementById("question");
 var optionsContainer = document.getElementById("options");
 var timerEl = document.getElementById("countdown");
+var initialsContainer = document.getElementById("initials");
+var playAgain = document.getElementById("play-again");
+var leaderboardContainer = document.getElementById("leaderboard");
+var leaderboardButton = document.getElementById("next-btn");
+var initialsInput = document.getElementById("initials-input");
+var learderboardUl = document.getElementById("leaderbard-container");
 var startTime = 5;
 var gameSeconds = 60;
+var leaderboards = JSON.parse(localStorage.getItem("leaderboards")) || [];
 startButton.addEventListener("click", startGame);
 
 const questions = [
@@ -121,6 +128,7 @@ function checkAnswer(selectedIndex) {
   if (currentQuestionIndex < questions.length) {
     displayQuestion();
   } else {
+    endGame();
     console.log("Quiz finished!");
   }
 }
@@ -140,14 +148,14 @@ function countdown() {
 }
 function gameTime() {
   var timeInterval = setInterval(function () {
+    if (gameSeconds === 0 || currentQuestionIndex >= questions.length) {
+      timerEl.textContent = "";
+      clearInterval(timeInterval);
+    }
+
     if (gameSeconds > 0) {
       gameSeconds--;
       updateTimer();
-    }
-
-    if (gameSeconds === 0) {
-      timerEl.textContent = "";
-      clearInterval(timeInterval);
     }
   }, 1000);
 }
@@ -161,4 +169,34 @@ function updateTimer() {
 
 function endGame() {
   quizContainer.classList.add("hide");
+  initialsContainer.classList.remove("hide");
+  playAgain.addEventListener("click", resetGame);
+  leaderboardButton.addEventListener("click", addToLeaderboard);
+}
+function resetGame() {
+  window.location.reload();
+}
+
+function addToLeaderboard() {
+  const name = initialsInput.value;
+  const nameAndScore = {
+    name: name,
+    score: gameSeconds,
+  };
+
+  leaderboards.push(nameAndScore);
+
+  localStorage.setItem("leaderboards", JSON.stringify(leaderboards));
+
+  renderLeaderboard();
+}
+
+function renderLeaderboard() {
+  initialsContainer.classList.add("hide");
+  leaderboardContainer.classList.remove("hide");
+  for (var i = 0; i < leaderboards.length; i++) {
+    var liElm = document.createElement("li");
+    liElm.textContent = `Name: ${leaderboards[i].name} - Score: ${leaderboards[i].score}`;
+    learderboardUl.appendChild(liElm);
+  }
 }
