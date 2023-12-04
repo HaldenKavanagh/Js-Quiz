@@ -10,4 +10,8 @@ Simply click start when you launch the webpage, once the countdown ends, click o
 
 ## screenshot
 
+![deployed-ss](/images/Js-quiz-SS.jpg)
+
 ## link to deployed application
+
+https://haldenkavanagh.github.io/Js-Quiz/
