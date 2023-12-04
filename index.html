@@ -10,12 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Gothic+A1:wght@300;400&family=Rajdhani:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- title -->
     <h1 id="title">Welcome to My trivia game!</h1>
+    <!-- countdown -->
     <h2 id="countdown"></h2>
+    <!-- game itself -->
     <div id="quiz" class="hide">
       <p id="question"></p>
       <ul id="options"></ul>
     </div>
+    <!-- rules section -->
     <div id="rules" class="rules">
       <h2 id="rules-title">RULES</h2>
       <ul>
@@ -26,10 +30,11 @@
           time so be carefull!
         </li>
         <li>
-          The quiz has 10 questions, when you finish the game, your remaining time will be your score. Enter your initials to join the leaderboard!
+          The quiz has 8 questions, when you finish the game, your remaining time will be your score. Enter your initials to join the leaderboard!
         </li>
       </ul>
     </div>
+    <!-- endgame screen -->
     <div id="initials" class="hide">
       <h2>Enter your initials to join the leaderboard</h2>
       <input type="text" id="initials-input" placeholder="Enter Initials here"></input>
@@ -37,12 +42,13 @@
       <button id="play-again">Play again</button>
 
     </div>
+    <!-- leaderboard screen -->
     <div id="leaderboard" class="hide">
+      <h2>Leaderboard:</h2>
       <ul id="leaderbard-container">
-        <p>leaderboard</p>
       </ul>
     </div>
-
+    <!-- buttons -->
     <button id="start-btn" class="">start</button>
     <button id="next-btn" class="hide">Next</button>
     <script src="./assets/js/script.js"></script>

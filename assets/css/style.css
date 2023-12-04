@@ -1,3 +1,5 @@
+/* general styling */
+
 :root {
   --dred: #c81d25;
   --lred: #ff5a5f;
@@ -9,6 +11,9 @@
   background-color: var(--dblue);
   font-family: "Gothic A1", sans-serif;
 }
+
+/* game container */
+
 body {
   display: flex;
   flex-direction: column;
@@ -33,6 +38,22 @@ body {
   color: var(--dblue);
   border-radius: 5px;
 }
+
+#start-btn {
+  background-color: var(--lred);
+}
+#rules-title {
+  margin-left: 25px;
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+/* styling for the question and options for each question */
+
 #question {
   background-color: var(--grey);
   color: var(--dblue);
@@ -57,22 +78,22 @@ body {
   cursor: pointer;
 }
 
+/* endgame screen */
+
 ::placeholder {
   color: var(--dblue);
   background-color: var(--lred);
 }
 
-.rules {
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-}
+/* leaderboard screen */
 
-#start-btn {
-  background-color: var(--lred);
+#leaderboard {
+  color: var(--dred);
+  border-radius: 5px;
+  text-align: center;
 }
-#rules-title {
-  margin-left: 25px;
+#leaderbard-container {
+  list-style: none;
 }
 
 .hide {

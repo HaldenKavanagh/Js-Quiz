@@ -14,7 +14,12 @@ var learderboardUl = document.getElementById("leaderbard-container");
 var startTime = 5;
 var gameSeconds = 60;
 var leaderboards = JSON.parse(localStorage.getItem("leaderboards")) || [];
+
+// event listeners
+
 startButton.addEventListener("click", startGame);
+
+// question array
 
 const questions = [
   {
@@ -68,35 +73,24 @@ const questions = [
     correctAnswer: "Richard D James",
   },
   {
-    question:
-      "What is the name of the former Buffalo based rap gruip wich included Westside Gunn, Conway the Machine, and Benny the Butcher",
-    options: ["Grisielda", "$uicideBoy$", "ShittyBoyz", "Fire-toolz"],
-    correctAnswer: "Grisielda",
-  },
-  {
     question: "Who is not an original member of the three six mafia",
     options: ["DJ Paul", "Gangsta Boo", "Project Pat", "Lord Infamous"],
     correctAnswer: "Project Pat",
   },
-  {
-    question: "Where was the former musical gruip Drain-gang formed?",
-    options: [
-      "Stockholm, Sweden",
-      "Memphis Tennasee",
-      "Miami Florida",
-      "Frankfurt, Germany",
-    ],
-    correctAnswer: "Stockholm, Sweden",
-  },
 ];
 
 let currentQuestionIndex = 0;
+
+// start game function, triggers when the start button is clicked
+// calls the countdown function
 
 function startGame() {
   rules.classList.add("hide");
   startButton.classList.add("hide");
   countdown();
 }
+
+// displays current question to the user from the array
 
 function displayQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
@@ -110,6 +104,8 @@ function displayQuestion() {
     optionsContainer.appendChild(li);
   });
 }
+
+// checks the answer, and subtracts 10 seconds from the time if answered incorrectly. Increases the question index, and calls for the new question to be displayed
 
 function checkAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
@@ -132,6 +128,9 @@ function checkAnswer(selectedIndex) {
     console.log("Quiz finished!");
   }
 }
+
+// 5 sec countdown for the game, when finished calls the display question and the actual game timer
+
 function countdown() {
   var timeInterval = setInterval(function () {
     startTime--;
@@ -146,6 +145,9 @@ function countdown() {
     }
   }, 1000);
 }
+
+// 60 sec countdown for the game. when the time hits zero, or when the question array is depleted, calls the endgame function
+
 function gameTime() {
   var timeInterval = setInterval(function () {
     if (gameSeconds === 0 || currentQuestionIndex >= questions.length) {
@@ -159,6 +161,9 @@ function gameTime() {
     }
   }, 1000);
 }
+
+// updates the timer when you get a question wrong, calls the endgame function when time hits zero
+
 function updateTimer() {
   timerEl.textContent = `Time remaining: ${gameSeconds} seconds`;
   if (gameSeconds <= 0) {
@@ -167,15 +172,22 @@ function updateTimer() {
   }
 }
 
+// endgame screen, asks for user their initials to see the leaderboard, or calls the reetgame function
+
 function endGame() {
   quizContainer.classList.add("hide");
   initialsContainer.classList.remove("hide");
   playAgain.addEventListener("click", resetGame);
   leaderboardButton.addEventListener("click", addToLeaderboard);
 }
+
+// refreshes the game window to reset the game
+
 function resetGame() {
   window.location.reload();
 }
+
+// adds stored score to the leaderboard
 
 function addToLeaderboard() {
   const name = initialsInput.value;
@@ -190,6 +202,8 @@ function addToLeaderboard() {
 
   renderLeaderboard();
 }
+
+// displays the leadrboard
 
 function renderLeaderboard() {
   initialsContainer.classList.add("hide");
